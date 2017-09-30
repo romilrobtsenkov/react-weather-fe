@@ -2,6 +2,7 @@ import * as types from '../../constants/ActionTypes'
 
 const INITIAL_STATE = {
   weather: {},
+  cached: {},
   loading: true,
   error: false
 }
