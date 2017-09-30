@@ -3,6 +3,9 @@
 Ensure Docker is set up and running.
 
 ### Setup dev environment 
+
+First build and run [backend](https://github.com/romilrobtsenkov/react-weather-be)
+
 ```
 docker-compose up
 ```
