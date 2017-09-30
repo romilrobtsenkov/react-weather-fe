@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
 import { Link } from 'react-router-dom'
+import { removeEmpty } from '../../utils/helpers'
 
 import './Forecast.scss'
 
@@ -9,15 +10,16 @@ class Forecast extends React.Component {
   constructor (props) {
     super(props)
 
-    this.query = queryString.parse(props.history.location.search)
-    if (!Object.keys(this.query).length) {
-      // clear url and return to search
-    }
-
-    console.log('searching', this.query)
+    const { q, lat, lng } = queryString.parse(props.history.location.search)
+    this.query = removeEmpty({ q, lat, lng })
   }
 
   componentDidMount () {
+    if (!Object.keys(this.query).length) {
+      // clear url and return to search
+      this.props.history.replace('/')
+      return
+    }
     this.props.getWeather(this.query)
   }
 
