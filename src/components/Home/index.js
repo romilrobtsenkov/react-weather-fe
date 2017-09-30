@@ -1,12 +1,15 @@
 import React from 'react'
 import './Home.scss'
 import queryString from 'query-string'
+import nprogress from 'nprogress'
 
 class Home extends React.Component {
   constructor (props) {
     super(props)
 
     this.handleSearch = this.handleSearch.bind(this)
+    this.getUserLocation = this.getUserLocation.bind(this)
+    this.gotCoords = this.gotCoords.bind(this)
   }
 
   handleSearch (e) {
@@ -25,6 +28,30 @@ class Home extends React.Component {
     )
   }
 
+  getUserLocation () {
+    if (navigator.geolocation) {
+      nprogress.start()
+
+      navigator.geolocation.getCurrentPosition(this.gotCoords)
+    } else {
+      window.alert('Geolocation is not supported by this browser.')
+    }
+  }
+
+  gotCoords (position) {
+    nprogress.done()
+
+    const { latitude, longitude } = position.coords
+    this.props.history.push(
+      '/forecast' +
+      '?' +
+      queryString.stringify({
+        lat: latitude,
+        lon: longitude
+      }, { arrayFormat: 'bracket' })
+    )
+  }
+
   render () {
     return (
       <div id='home'>
@@ -32,6 +59,10 @@ class Home extends React.Component {
         <form onSubmit={this.handleSearch}>
           <input type='search' placeholder='location or lat,lng' />
         </form>
+        <br />
+        or
+        <br />
+        use my <a href='#getPosition' onClick={this.getUserLocation}>current position</a>
       </div>
     )
   }
