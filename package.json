@@ -23,6 +23,7 @@
   "homepage": "https://github.com/romilrobtsenkov/react-weather-fe#readme",
   "dependencies": {
     "axios": "^0.16.2",
+    "query-string": "^5.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",

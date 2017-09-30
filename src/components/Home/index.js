@@ -1,9 +1,40 @@
-import { connect } from 'react-redux'
-import { getWeather } from './HomeActions'
-import Home from './Home'
+import React from 'react'
+import './Home.scss'
+import queryString from 'query-string'
 
-const mapStateToProps = state => ({
-  home: state.home
-})
+class Home extends React.Component {
+  constructor (props) {
+    super(props)
 
-export default connect(mapStateToProps, { getWeather })(Home)
+    this.handleSearch = this.handleSearch.bind(this)
+  }
+
+  handleSearch (e) {
+    e.preventDefault()
+    const searchString = e.target.querySelector('input').value
+
+    const queryParams = searchString.split(',')
+    const query = queryParams.length > 1
+      ? { lat: queryParams[0], lng: queryParams[1] }
+      : { q: searchString }
+
+    this.props.history.push(
+      '/forecast' +
+      '?' +
+      queryString.stringify(query, { arrayFormat: 'bracket' })
+    )
+  }
+
+  render () {
+    return (
+      <div id='home'>
+        <h1>Welcome</h1>
+        <form onSubmit={this.handleSearch}>
+          <input type='search' placeholder='location or lat,lng' />
+        </form>
+      </div>
+    )
+  }
+}
+
+export default Home

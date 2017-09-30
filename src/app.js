@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { Route, Switch, BrowserRouter, browserHistory } from 'react-router-dom'
 
 import Home from './components/Home'
+import Forecast from './components/Forecast'
 import NotFound from './components/NotFound'
 
 import store from './store'
@@ -15,6 +16,7 @@ render(
       <div id='content-wrapper'>
         <Switch>
           <Route exact path='/' restrict component={Home} />
+          <Route exact path='/forecast' restrict component={Forecast} />
           <Route component={NotFound} />
         </Switch>
       </div>

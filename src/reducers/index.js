@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
-import home from '../components/Home/HomeReducers'
+import forecast from '../components/Forecast/ForecastReducers'
 
 const rootReducer = combineReducers({
-  home
+  forecast
 })
 
 export default rootReducer
