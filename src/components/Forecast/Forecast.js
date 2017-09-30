@@ -12,6 +12,8 @@ class Forecast extends React.Component {
 
     const { q, lat, lon } = queryString.parse(props.history.location.search)
     this.query = removeEmpty({ q, lat, lon })
+
+    this.handleUnitChange = this.handleUnitChange.bind(this)
   }
 
   componentDidMount () {
@@ -20,12 +22,22 @@ class Forecast extends React.Component {
       this.props.history.replace('/')
       return
     }
+
+    const { units } = window.localStorage
+    if (units && units !== this.props.units) {
+      this.props.setUnits(units)
+    }
+
     this.props.getWeather(this.query)
   }
 
   componentWillUnmount () {
     // Reset all state params
     this.props.initForecast()
+  }
+
+  handleUnitChange () {
+    this.props.setUnits(this.props.units === 'C' ? 'F' : 'C')
   }
 
   render () {
@@ -36,9 +48,19 @@ class Forecast extends React.Component {
     return (
       <div id='forecast'>
         <Link to='/'>Back</Link>
-        {loading &&
-          <p>LOADING . . .</p>}
-
+        <br />
+        {this.props.units}
+        <br />
+        <label className='switch'>
+          <input
+            type='checkbox'
+            checked={this.props.units === 'C'}
+            onChange={this.handleUnitChange}
+          />
+          <span className='slider round' />
+        </label>
+        <br />
+        <br />
         {errorAccoured &&
           <p>
             {error.data.msg}
@@ -57,7 +79,8 @@ class Forecast extends React.Component {
 Forecast.propTypes = {
   forecast: PropTypes.object.isRequired,
   getWeather: PropTypes.func.isRequired,
-  initForecast: PropTypes.func.isRequired
+  initForecast: PropTypes.func.isRequired,
+  setUnits: PropTypes.func.isRequired
 }
 
 export default Forecast

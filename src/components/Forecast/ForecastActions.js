@@ -39,3 +39,8 @@ export const getWeather = (query) => dispatch => {
 export const initForecast = () => dispatch => {
   dispatch({ type: types.WEATHER_INIT })
 }
+
+export const setUnits = (units) => dispatch => {
+  window.localStorage.setItem('units', units)
+  dispatch({ type: types.SET_UNITS, units })
+}
