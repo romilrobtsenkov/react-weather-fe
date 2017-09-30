@@ -15,7 +15,7 @@ class Home extends React.Component {
 
     const queryParams = searchString.split(',')
     const query = queryParams.length > 1
-      ? { lat: queryParams[0], lng: queryParams[1] }
+      ? { lat: queryParams[0], lon: queryParams[1] }
       : { q: searchString }
 
     this.props.history.push(

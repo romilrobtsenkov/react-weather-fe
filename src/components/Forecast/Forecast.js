@@ -10,8 +10,8 @@ class Forecast extends React.Component {
   constructor (props) {
     super(props)
 
-    const { q, lat, lng } = queryString.parse(props.history.location.search)
-    this.query = removeEmpty({ q, lat, lng })
+    const { q, lat, lon } = queryString.parse(props.history.location.search)
+    this.query = removeEmpty({ q, lat, lon })
   }
 
   componentDidMount () {
@@ -36,6 +36,9 @@ class Forecast extends React.Component {
     return (
       <div id='forecast'>
         <Link to='/'>Back</Link>
+        {loading &&
+          <p>LOADING . . .</p>}
+
         {errorAccoured &&
           <p>
             {error.data.msg}
