@@ -2,7 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 import { removeEmpty } from '../../utils/helpers'
+import Today from './Today'
 
 import './Forecast.scss'
 
@@ -12,7 +14,7 @@ class Forecast extends React.Component {
 
     const { q, lat, lon } = queryString.parse(props.history.location.search)
     this.query = removeEmpty({ q, lat, lon })
-
+    this.date = moment().format('dddd, MMMM Do YYYY')
     this.handleUnitChange = this.handleUnitChange.bind(this)
   }
 
@@ -27,12 +29,10 @@ class Forecast extends React.Component {
     if (units && units !== this.props.units) {
       this.props.setUnits(units)
     }
-
     this.props.getWeather(this.query)
   }
 
   componentWillUnmount () {
-    // Reset all state params
     this.props.initForecast()
   }
 
@@ -41,35 +41,38 @@ class Forecast extends React.Component {
   }
 
   render () {
-    const { loading, weather, error } = this.props.forecast
+    const { units, forecast } = this.props
+    const { loading, weather, error } = forecast
     const errorAccoured = !loading && error
-    console.log(weather)
+    if (weather.list) {
+      console.log(weather.list[0])
+    }
 
     return (
       <div id='forecast'>
         <Link to='/'>Back</Link>
         <br />
-        {this.props.units}
+        {units}
         <br />
         <label className='switch'>
           <input
             type='checkbox'
-            checked={this.props.units === 'C'}
+            checked={units === 'C'}
             onChange={this.handleUnitChange}
           />
           <span className='slider round' />
         </label>
         <br />
-        <br />
         {errorAccoured &&
           <p>
-            {error.data.msg}
+            {error.data.msg || error.data.message}
           </p>}
 
         {!loading && !error &&
           <div>
             <p>Got results</p>
             <p>{weather.city.name}</p>
+            <Today list={weather.list} units={units} date={this.date} />
           </div>}
       </div>
     )
