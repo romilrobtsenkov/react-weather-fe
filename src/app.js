@@ -3,6 +3,9 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { Route, Switch, BrowserRouter, browserHistory } from 'react-router-dom'
 
+import './importedstyles/weather-icons.min.css'
+import './importedstyles/weather-icons-wind.min.css'
+
 import Home from './components/Home'
 import Forecast from './components/Forecast'
 import NotFound from './components/NotFound'

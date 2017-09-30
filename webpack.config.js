@@ -93,12 +93,12 @@ const rules = [
     ]
   },
   {
-    test: /fonts\/([^/]*)\.(woff|woff2|eot|ttf|svg)$/,
+    test: /font\/([^/]*)\.(woff|woff2|eot|ttf|svg)$/,
     exclude: /node_modules/,
     use: [
       {
         loader: 'url-loader',
-        options: { limit: 1, name: 'fonts/[name].[ext]' } // do not embed fonts > 1b
+        options: { limit: 1, name: 'font/[name].[ext]' } // do not embed fonts > 1b
       }
     ]
   },
@@ -111,6 +111,16 @@ const rules = [
       use: [
         { loader: 'css-loader', options: { sourceMap: true } },
         { loader: 'sass-loader', options: { sourceMap: true } }
+      ]
+    })
+  },
+  {
+    test: /\.css$/,
+    exclude: /node_modules/,
+    use: extractSCSS.extract({
+      fallback: 'style-loader',
+      use: [
+        { loader: 'css-loader' }
       ]
     })
   }

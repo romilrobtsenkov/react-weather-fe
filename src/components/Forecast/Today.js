@@ -1,11 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { getTempString, getSpeedString } from '../../utils/helpers'
+import { getTempString, getSpeedString, getIconClass } from '../../utils/helpers'
 
 const Today = props => {
-  const { list, units, date } = props
+  const { today, units, date } = props
 
-  const today = list[0]
   const todayWeather = today.weather[0]
   const { wind } = today
   const { temp, humidity, pressure } = today.main
@@ -13,18 +12,19 @@ const Today = props => {
   return (
     <div>
       <h2>{date}</h2>
-      <h3>{todayWeather.main}</h3>
+      <h3>{todayWeather.description}</h3>
       <div>
         <div>
           <p>{getTempString(temp, units)}</p>
         </div>
         <div>
-          <p>ICON</p>
+          <p> <i className={getIconClass(todayWeather.icon)} /></p>
         </div>
         <div>
-          <p>Humidity: { humidity } %</p>
           <p>Wind { getSpeedString(wind.speed, units) }</p>
           <p>Pressure: { pressure } hPa</p>
+          <p>Clouds: { today.clouds.all } %</p>
+          <p>Humidity: { humidity } %</p>
         </div>
       </div>
     </div>
@@ -32,7 +32,7 @@ const Today = props => {
 }
 
 Today.propTypes = {
-  list: PropTypes.array.isRequired,
+  today: PropTypes.object.isRequired,
   units: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired
 }

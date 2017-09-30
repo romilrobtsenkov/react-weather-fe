@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import moment from 'moment'
 import { removeEmpty } from '../../utils/helpers'
 import Today from './Today'
+import List from './List'
 
 import './Forecast.scss'
 
@@ -44,9 +45,6 @@ class Forecast extends React.Component {
     const { units, forecast } = this.props
     const { loading, weather, error } = forecast
     const errorAccoured = !loading && error
-    if (weather.list) {
-      console.log(weather.list[0])
-    }
 
     return (
       <div id='forecast'>
@@ -70,9 +68,9 @@ class Forecast extends React.Component {
 
         {!loading && !error &&
           <div>
-            <p>Got results</p>
-            <p>{weather.city.name}</p>
-            <Today list={weather.list} units={units} date={this.date} />
+            <p>Got results for: {weather.city.name}</p>
+            <Today today={weather.list[0]} units={units} date={this.date} />
+            <List list={weather.list} units={units} />
           </div>}
       </div>
     )
