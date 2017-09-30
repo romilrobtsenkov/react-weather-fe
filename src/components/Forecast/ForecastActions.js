@@ -7,8 +7,12 @@ export const getWeather = (query) => dispatch => {
       console.log('Loaded weather status: ' + weather.status)
       return dispatch({ type: types.WEATHER_LOADED, weather: weather.data })
     })
-    .catch(err => {
-      // TODO handle errors
-      console.log(err)
+    .catch(error => {
+      console.log(error)
+      return dispatch({ type: types.WEATHER_LOADED, error })
     })
+}
+
+export const initForecast = () => dispatch => {
+  dispatch({ type: types.WEATHER_INIT })
 }
