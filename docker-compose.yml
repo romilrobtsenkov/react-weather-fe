@@ -1,0 +1,18 @@
+version: "2"
+services:
+
+  web:
+    image: react-weather-fe
+    container_name: "reactApp"
+    networks:
+      - main
+    build: .
+    ports:
+      - "3446:3446"
+    volumes:
+      - .:/var/www/react-weather-fe/
+      - /var/www/react-weather-fe/node_modules
+    command: npm run dev
+
+networks:
+  main:
