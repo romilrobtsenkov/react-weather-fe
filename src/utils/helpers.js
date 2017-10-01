@@ -12,8 +12,8 @@ export const getTempString = (temp, units, round) => {
     temp -= 273.15
   }
 
-  const roundTo = round || 1
-  return temp.toFixed(roundTo) + ' ' + postfix
+  const roundTo = round || 0
+  return temp.toFixed(roundTo) + '°' + postfix
 }
 
 export const getSpeedString = (speed, units, round) => {
@@ -23,7 +23,7 @@ export const getSpeedString = (speed, units, round) => {
     postfix = 'm/h'
   }
 
-  const roundTo = round || 1
+  const roundTo = round || 0
   return speed.toFixed(roundTo) + ' ' + postfix
 }
 

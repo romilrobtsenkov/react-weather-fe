@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { getTempString, getSpeedString, getIconClass } from '../../utils/helpers'
+import './Today.scss'
 
 const Today = props => {
   const { today, units, date } = props
@@ -10,24 +11,44 @@ const Today = props => {
   const { temp, humidity, pressure } = today.main
 
   return (
-    <div>
-      <h2>{date}</h2>
-      <h3>{todayWeather.description}</h3>
-      <div>
-        <div>
-          <p>{getTempString(temp, units)}</p>
+    <section id='today-wrapper'>
+      <h2 className='date-text'>{date}</h2>
+      <h3 className='forecast-desc'>{todayWeather.description}</h3>
+      <div className='current-wrapper'>
+        <div className='current-temp'>
+          <span>{getTempString(temp, units)}</span>
         </div>
-        <div>
-          <p> <i className={getIconClass(todayWeather.icon)} /></p>
+        <div className='current-icon'>
+          <span> <i className={getIconClass(todayWeather.icon)} /></span>
         </div>
-        <div>
-          <p>Wind { getSpeedString(wind.speed, units) }</p>
-          <p>Pressure: { pressure } hPa</p>
-          <p>Clouds: { today.clouds.all } %</p>
-          <p>Humidity: { humidity } %</p>
+        <div className='current-stats'>
+          <table>
+            <tbody>
+              <tr>
+                <td>Wind</td>
+                <td>
+                  <i className={'wi wi-wind from-' + wind.deg.toFixed() + '-deg'} />
+                  {' '}
+                  { getSpeedString(wind.speed, units) }
+                </td>
+              </tr>
+              <tr>
+                <td>Pressure</td>
+                <td>{ pressure } hPa</td>
+              </tr>
+              <tr>
+                <td>Clouds</td>
+                <td>{ today.clouds.all } %</td>
+              </tr>
+              <tr>
+                <td>Humidity</td>
+                <td>{ humidity } %</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

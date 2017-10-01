@@ -1,0 +1,28 @@
+.list-wrapper {
+  margin-top: 10px;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  .weather-list-item {
+    display: inline-block;
+    text-align: center;
+    font-weight: 300;
+
+    .list-weekday {
+      font-size: 0.8em;
+      margin-bottom: 15px;
+    }
+
+    .list-icon {
+      font-size: 2.2em;
+      margin: 0;
+    }
+
+    .list-temp {
+      font-size: 0.9em;
+      margin-bottom: 0;
+    }
+  }
+}

@@ -2,16 +2,49 @@
   .forecast-header {
     width: 100%;
 
+    .link-back {
+      float: left;
+
+      width: 38px;
+      height: 38px;
+      display: block;
+      margin-top: 10px;
+      margin-left: -4px;
+      margin-right: 10px;
+
+      img {
+        width: 30px;
+        padding: 4px;
+      }
+
+    }
+
     .city-placeholder {
       float: left;
+      margin-top: 10px;
 
       .city-name {
         display: inline-block;
+        margin: 0;
+
+        a {
+          width: 38px;
+          height: 38px;
+          display: inline-block;
+
+         
+        }
+
+        .name-text {
+          margin-top: -10px;
+        }
       }
     }
 
     .onoffswitch {
+      margin-top: 10px;
       float: right;
     }
   }
 }
+

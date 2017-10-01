@@ -18,13 +18,13 @@ import './app.scss'
 render(
   <Provider store={store}>
     <BrowserRouter history={browserHistory}>
-      <div id='content-wrapper'>
+      <section id='content-wrapper'>
         <Switch>
           <Route exact path='/' restrict component={Home} />
           <Route exact path='/forecast' restrict component={Forecast} />
           <Route component={NotFound} />
         </Switch>
-      </div>
+      </section>
     </BrowserRouter>
   </Provider>,
   document.querySelector('#main')

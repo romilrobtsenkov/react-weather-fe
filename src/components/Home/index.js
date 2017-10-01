@@ -58,7 +58,7 @@ class Home extends React.Component {
 
   render () {
     return (
-      <div id='home'>
+      <section id='home'>
         <form onSubmit={this.handleSearch}>
           <div id='search-input-wrapper'>
             <input type='search' id='search-input' placeholder='City' />
@@ -71,7 +71,7 @@ class Home extends React.Component {
           <br />
           use my <a href='#getPosition' onClick={this.getUserLocation}>current position</a>
         </div>
-      </div>
+      </section>
     )
   }
 }

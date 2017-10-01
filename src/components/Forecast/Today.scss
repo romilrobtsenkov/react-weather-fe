@@ -1,0 +1,50 @@
+@import "../../defaults";
+
+#today-wrapper {
+  margin-top: 40px;
+
+  h2.date-text {
+    font-weight: 300;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+  }
+  
+  h3.forecast-desc {
+    font-weight: 300;
+    font-size: 1.4em;
+    margin-top: 10px;
+    text-transform: capitalize;
+  }
+
+  .current-wrapper {
+
+    color: $color-highlight;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    margin-left: -20px;
+    margin-top: -10px;
+
+    .current-temp,
+    .current-icon,
+    .current-stats {
+      margin: 15px;
+      display: inline-block;
+    }
+
+    .current-temp {
+      font-size: 5em;
+    }
+
+    .current-icon {
+      font-size: 5em;
+    }
+
+    .current-stats {
+      table {
+        font-weight: 300;
+        border-spacing: 5px;
+      }
+    }
+  }
+}
