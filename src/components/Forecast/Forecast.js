@@ -6,6 +6,7 @@ import moment from 'moment'
 import { removeEmpty } from '../../utils/helpers'
 import Today from './Today'
 import List from './List'
+import Unitswitch from './Unitswitch'
 
 import './Forecast.scss'
 
@@ -50,16 +51,7 @@ class Forecast extends React.Component {
       <div id='forecast'>
         <Link to='/'>Back</Link>
         <br />
-        {units}
-        <br />
-        <label className='switch'>
-          <input
-            type='checkbox'
-            checked={units === 'C'}
-            onChange={this.handleUnitChange}
-          />
-          <span className='slider round' />
-        </label>
+        <Unitswitch units={units} handleUnitChange={this.handleUnitChange} />
         <br />
         {errorAccoured &&
           <p>
