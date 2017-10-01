@@ -65,6 +65,7 @@ class Forecast extends React.Component {
         </div>
         {errorAccoured &&
           <p>
+            Something went wrong, please try again later!<br />
             {error.data.msg || error.data.message}
           </p>}
 
