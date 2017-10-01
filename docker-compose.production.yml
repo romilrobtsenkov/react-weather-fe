@@ -2,8 +2,8 @@ version: "2"
 services:
 
   web:
-    command: npm run build
     container_name: "reactAppProduction"
+    command: npm run build
 
   nginx:
     container_name: "nginxProduction"

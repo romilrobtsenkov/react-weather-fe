@@ -24,7 +24,7 @@ Check and change NodeApp port if needed `nginx.production.conf:41`. Default valu
 
 
 ```
-docker-compose -f docker-compose.yml -f docker-compose.production.yml up
+docker-compose -f docker-compose.yml -f docker-compose.production.yml up -d
 ```
 
 Application will be available `locahost:80`
