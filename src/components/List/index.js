@@ -10,18 +10,23 @@ const List = props => {
 
   let items = []
 
-  // TODO remove first (current weather)
+  // skip second if multiple entries for current day
+  const firstDate = moment(list[0].dt_txt).format('D')
+  const secondDate = moment(list[1].dt_txt).format('D')
+  if (firstDate === secondDate) {
+    list.splice(1, 1)
+  }
 
   list.forEach((c, i) => {
     let { dt, weather, main } = c
-    const todayWeather = weather[0]
+    const singleWeather = weather[0]
     const { temp } = main
 
     items.push(
       <div key={dt} className='weather-list-item' >
         <p className='list-weekday'>{moment(dt * 1000).format('dddd')}</p>
         <p className='list-icon'>
-          <i className={getIconClass(todayWeather.icon)} />
+          <i className={getIconClass(singleWeather.icon)} />
         </p>
         <p className='list-temp'>{ getTempString(temp, units) }</p>
       </div>
