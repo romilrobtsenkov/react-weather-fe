@@ -69,7 +69,7 @@ class Home extends React.Component {
           <br />
           <span className='smaller-or'>or</span>
           <br />
-          use my <a href='#getPosition' onClick={this.getUserLocation}>current position</a>
+          use my <a href='javascript:void(0)' onClick={this.getUserLocation}>current position</a>
         </div>
       </section>
     )
