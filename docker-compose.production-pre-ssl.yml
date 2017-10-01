@@ -1,0 +1,22 @@
+version: "2"
+services:
+
+  web:
+    container_name: "reactAppProduction"
+    command: "echo 'skipping container...'"
+
+  nginx:
+    container_name: "nginxProduction"
+    networks:
+      - main
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.production-pre-ssl.conf:/etc/nginx/nginx.conf:ro
+      - ./dist:/var/www/react-weather-fe/dist
+      - /data/letsencrypt:/data/letsencrypt
+
+networks:
+  main:
+    external: 
+      name: reactweatherbe_main
