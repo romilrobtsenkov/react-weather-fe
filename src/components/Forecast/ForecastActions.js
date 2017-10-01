@@ -15,10 +15,10 @@ export const getWeather = (query) => dispatch => {
 
   return Api('GET', '/weather', { params: query })
     .then(weather => {
-      console.log('Loaded weather status: ' + weather.status)
+      // console.log('Loaded weather status: ' + weather.status)
 
       if (cachedWeather && cachedWeather.dateModified === weather.dateModified) {
-        console.log('same data, do not trigger update')
+        // console.log('same data, do not trigger update')
         return
       }
 
