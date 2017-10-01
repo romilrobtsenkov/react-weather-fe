@@ -3,6 +3,8 @@ import './Home.scss'
 import queryString from 'query-string'
 import nprogress from 'nprogress'
 
+import searchIcon from '../../media/searchIcon.svg'
+
 class Home extends React.Component {
   constructor (props) {
     super(props)
@@ -14,7 +16,9 @@ class Home extends React.Component {
 
   handleSearch (e) {
     e.preventDefault()
-    const searchString = e.target.querySelector('input').value
+    const searchString = document.getElementById('search-input').value
+
+    if (!searchString) return
 
     const queryParams = searchString.split(',')
     const query = queryParams.length > 1
@@ -55,14 +59,18 @@ class Home extends React.Component {
   render () {
     return (
       <div id='home'>
-        <h1>Welcome</h1>
         <form onSubmit={this.handleSearch}>
-          <input type='search' placeholder='location or lat,lng' />
+          <div id='search-input-wrapper'>
+            <input type='search' id='search-input' placeholder='City' />
+            <a href='#' onClick={this.handleSearch}><img src={searchIcon} /></a>
+          </div>
         </form>
-        <br />
-        or
-        <br />
-        use my <a href='#getPosition' onClick={this.getUserLocation}>current position</a>
+        <div className='currentPosition'>
+          <br />
+          <span className='smaller-or'>or</span>
+          <br />
+          use my <a href='#getPosition' onClick={this.getUserLocation}>current position</a>
+        </div>
       </div>
     )
   }

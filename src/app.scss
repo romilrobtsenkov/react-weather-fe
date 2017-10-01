@@ -1,73 +1,67 @@
 /* Make clicks pass-through */
-#nprogress {
-  pointer-events: none;
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+@import "./defaults";
 
-#nprogress .bar {
-  background: #29d;
-
-  position: fixed;
-  z-index: 1031;
-  top: 0;
-  left: 0;
+html {
+  font-family: 'Roboto', sans-serif;
+  color: $color-main;
 
   width: 100%;
-  height: 2px;
-}
-
-/* Fancy blur effect */
-#nprogress .peg {
-  display: block;
-  position: absolute;
-  right: 0px;
-  width: 100px;
   height: 100%;
-  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
-  opacity: 1.0;
+  
+  body,
+  #main {
+    width: 100%;
+    height: 100%;  
+  }
 
-  -webkit-transform: rotate(3deg) translate(0px, -4px);
-      -ms-transform: rotate(3deg) translate(0px, -4px);
-          transform: rotate(3deg) translate(0px, -4px);
+  #main {
+    position: relative;
+    overflow-y: auto;
+  
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fd746c+0,ff9068+100 */
+    background: #fd746c; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #fd746c 0%, #ff9068 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #fd746c 0%,#ff9068 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #fd746c 0%,#ff9068 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fd746c', endColorstr='#ff9068',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  }
+
+  #home, 
+  #forecast {
+    padding: 30px;
+  }
+
+  a {
+    color: $color-main;
+  }
 }
 
-/* Remove these to get rid of the spinner */
-#nprogress .spinner {
-  display: block;
-  position: fixed;
-  z-index: 1031;
-  top: 15px;
-  right: 15px;
+textarea, input, button { outline: none; }
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
-#nprogress .spinner-icon {
-  width: 18px;
-  height: 18px;
-  box-sizing: border-box;
-
-  border: solid 2px transparent;
-  border-top-color: #29d;
-  border-left-color: #29d;
-  border-radius: 50%;
-
-  -webkit-animation: nprogress-spinner 400ms linear infinite;
-          animation: nprogress-spinner 400ms linear infinite;
-}
-
-.nprogress-custom-parent {
-  overflow: hidden;
-  position: relative;
-}
-
-.nprogress-custom-parent #nprogress .spinner,
-.nprogress-custom-parent #nprogress .bar {
+#content-wrapper {
   position: absolute;
+  background: #fff;
+  width: 800px;
+  left:50%;
+  margin-left: -400px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
-@-webkit-keyframes nprogress-spinner {
-  0%   { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+@media (max-width: 700px) { 
+  #content-wrapper {
+    width: 100%;
+    left:0;
+    margin-left: 0;
+    top: 0;
+  }  
 }
-@keyframes nprogress-spinner {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+
+

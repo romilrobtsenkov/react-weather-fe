@@ -1,5 +1,70 @@
+@import "../../defaults";
+$color-placeholder: #a7a7a7;
+
 #home {
-  h1 {
-    color: blue;
+
+  margin: 100px 0;
+
+  #search-input-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    font-size: 30px;
+    margin: 0 auto;
+
+    input {
+      width: 100%;
+      padding-right: 36px;
+      text-align: center;
+      border: none;
+      border-bottom: 2px solid $color-main;
+      color: $color-main;
+      text-indent: 36px;
+    }
+
+    input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+      color: $color-placeholder;
+    }
+    input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color: $color-placeholder;
+      opacity: 1;
+    }
+    input::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color: $color-placeholder;
+      opacity: 1;
+    }
+    input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: $color-placeholder;
+    }
+    input::-ms-input-placeholder { /* Microsoft Edge */
+      color: $color-placeholder;
+    }
+    
+
+    img {
+      position: absolute;
+      width: 36px;
+      right: 7px;
+    }
+  }
+
+  .currentPosition {
+    text-align: center;
+    line-height: 2;
+
+    .smaller-or {
+      font-size: 0.9em;
+    }
+
+    a, a:visited, a:active {
+      text-decoration: underline;
+      text-decoration: none;
+      border-bottom: 1px $color-main dotted;
+    }
+
+    a:hover {
+      border-bottom: 1px $color-main solid;
+      
+    }    
   }
 }

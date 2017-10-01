@@ -1,3 +1,4 @@
+@import "../../defaults";
 
 /* Generated https://proto.io/freebies/onoff/ */
 .onoffswitch {
@@ -9,7 +10,7 @@
 }
 .onoffswitch-label {
   display: block; overflow: hidden; cursor: pointer;
-  border: 1px solid #4f6573; border-radius: 50px;
+  border: 1px solid $color-main; border-radius: 50px;
 }
 .onoffswitch-inner {
   display: block; width: 200%; margin-left: -100%;
@@ -17,18 +18,18 @@
 }
 .onoffswitch-inner:before, .onoffswitch-inner:after {
   display: block; float: left; width: 50%; height: 29px; padding: 0; line-height: 29px;
-  font-size: 15px; color: white; font-family: Trebuchet, Arial, sans-serif; 
+  font-size: 13px; color: white; font-weight: 900;
   box-sizing: border-box;
 }
 .onoffswitch-inner:before {
-  content: "°C";
+  content: "\B0\43";
   padding-left: 18px;
-  background-color: #ffffff; color: #4F6573;
+  background-color: #ffffff; color: $color-main;
 }
 .onoffswitch-inner:after {
-  content: "°F";
+  content: "\B0\46";
   padding-right: 18px;
-  background-color: #ffffff; color: #4F6573;
+  background-color: #ffffff; color: $color-main;
   text-align: right;
 }
 .onoffswitch-switch {
@@ -36,7 +37,7 @@
   background: #ffffff;
   position: absolute; top: 0; bottom: 0;
   right: 52px;
-  border: 1px solid #4f6573; border-radius: 50px;
+  border: 1px solid $color-main; border-radius: 50px;
   transition: all 0.3s ease-in 0s; 
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {

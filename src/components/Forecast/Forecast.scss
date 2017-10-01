@@ -1,0 +1,17 @@
+#forecast {
+  .forecast-header {
+    width: 100%;
+
+    .city-placeholder {
+      float: left;
+
+      .city-name {
+        display: inline-block;
+      }
+    }
+
+    .onoffswitch {
+      float: right;
+    }
+  }
+}

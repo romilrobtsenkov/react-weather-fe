@@ -8,6 +8,7 @@ import Today from './Today'
 import List from './List'
 import Unitswitch from './Unitswitch'
 
+import backIcon from '../../media/backIcon.svg'
 import './Forecast.scss'
 
 class Forecast extends React.Component {
@@ -49,9 +50,13 @@ class Forecast extends React.Component {
 
     return (
       <div id='forecast'>
-        <Link to='/'>Back</Link>
-        <br />
-        <Unitswitch units={units} handleUnitChange={this.handleUnitChange} />
+        <div className='forecast-header clearfix'>
+          <div className='city-placeholder'>
+            <Link to='/'><img src={backIcon} /></Link>
+            <h1 className='city-name' >{weather.city && weather.city.name}</h1>
+          </div>
+          <Unitswitch units={units} handleUnitChange={this.handleUnitChange} />
+        </div>
         <br />
         {errorAccoured &&
           <p>
@@ -60,7 +65,6 @@ class Forecast extends React.Component {
 
         {!loading && !error &&
           <div>
-            <p>Got results for: {weather.city.name}</p>
             <Today today={weather.list[0]} units={units} date={this.date} />
             <List list={weather.list} units={units} />
           </div>}
