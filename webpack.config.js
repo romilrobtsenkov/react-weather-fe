@@ -94,7 +94,6 @@ const rules = [
   },
   {
     test: /font\/([^/]*)\.(woff|woff2|eot|ttf|svg)$/,
-    exclude: /node_modules/,
     use: [
       {
         loader: 'url-loader',
@@ -105,7 +104,6 @@ const rules = [
   // TODO add autoprefixer like autoprefixer?browsers=last 2 version
   {
     test: /\.scss$/,
-    exclude: /node_modules/,
     use: extractSCSS.extract({
       fallback: 'style-loader',
       use: [
@@ -116,7 +114,6 @@ const rules = [
   },
   {
     test: /\.css$/,
-    exclude: /node_modules/,
     use: extractSCSS.extract({
       fallback: 'style-loader',
       use: [
