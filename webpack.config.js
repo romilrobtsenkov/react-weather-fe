@@ -84,7 +84,6 @@ const rules = [
   },
   {
     test: /media\/([^/]*)\.(jpe?g|png|gif|svg)$/i,
-    exclude: [/node_modules/],
     use: [
       {
         loader: 'url-loader',
