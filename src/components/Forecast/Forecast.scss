@@ -1,50 +1,34 @@
-#forecast {
-  .forecast-header {
+.forecast {
+  padding: 30px;
+  
+  .header {
     width: 100%;
 
-    .link-back {
-      float: left;
-
-      width: 38px;
-      height: 38px;
+    &__link-back {
       display: block;
+      float: left;
+      height: 38px;
       margin-top: 10px;
       margin-left: -4px;
       margin-right: 10px;
+      width: 38px;
 
       img {
-        width: 30px;
         padding: 4px;
+        width: 30px;
       }
-
     }
 
-    .city-placeholder {
+    &__city {
       float: left;
       margin-top: 10px;
 
-      .city-name {
+      h1 {
         display: inline-block;
         margin: 0;
-
-        a {
-          width: 38px;
-          height: 38px;
-          display: inline-block;
-
-         
-        }
-
-        .name-text {
-          margin-top: -10px;
-        }
       }
     }
 
-    .onoffswitch {
-      margin-top: 10px;
-      float: right;
-    }
   }
 }
 

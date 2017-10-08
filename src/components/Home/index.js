@@ -16,7 +16,7 @@ class Home extends React.Component {
 
   handleSearch (e) {
     e.preventDefault()
-    const searchString = document.getElementById('search-input').value
+    const searchString = document.getElementById('search__input').value
 
     if (!searchString) return
 
@@ -58,19 +58,17 @@ class Home extends React.Component {
 
   render () {
     return (
-      <section id='home'>
+      <section className='home'>
         <form onSubmit={this.handleSearch}>
-          <div id='search-input-wrapper'>
-            <input type='search' id='search-input' placeholder='City' />
-            <a href='#' onClick={this.handleSearch}><img src={searchIcon} /></a>
+          <div className='search'>
+            <input type='search' id='search__input' placeholder='City' />
+            <span onClick={this.handleSearch} role='button' className='search__icon'><img src={searchIcon} /></span>
           </div>
         </form>
-        <div className='currentPosition'>
-          <br />
-          <span className='smaller-or'>or</span>
-          <br />
-          use my <a href='javascript:void(0)' onClick={this.getUserLocation}>current position</a>
-        </div>
+        <p className='position'>
+          <span className='small'>or</span><br />
+          use my <span onClick={this.getUserLocation} role='button' className='position__button'>current position</span>
+        </p>
       </section>
     )
   }

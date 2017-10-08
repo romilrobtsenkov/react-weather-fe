@@ -18,14 +18,12 @@ import store from './store'
 render(
   <Provider store={store}>
     <BrowserRouter history={browserHistory}>
-      <section id='content-wrapper'>
-        <Switch>
-          <Route exact path='/' restrict component={Home} />
-          <Route exact path='/forecast' restrict component={Forecast} />
-          <Route component={NotFound} />
-        </Switch>
-      </section>
+      <Switch>
+        <Route exact path='/' restrict component={Home} />
+        <Route exact path='/forecast' restrict component={Forecast} />
+        <Route component={NotFound} />
+      </Switch>
     </BrowserRouter>
   </Provider>,
-  document.querySelector('#main')
+  document.getElementById('content-wrapper')
 )

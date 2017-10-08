@@ -10,14 +10,13 @@ const Unitswitch = props => {
       <input
         type='checkbox'
         name='onoffswitch'
-        className='onoffswitch-checkbox'
         id='unitsonoffswitch'
         checked={units === 'C'}
         onChange={handleUnitChange}
           />
-      <label className='onoffswitch-label' htmlFor='unitsonoffswitch'>
-        <span className='onoffswitch-inner' />
-        <span className='onoffswitch-switch' />
+      <label htmlFor='unitsonoffswitch'>
+        <span className='inner' />
+        <span className='switch' />
       </label>
     </div>
   )

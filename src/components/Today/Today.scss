@@ -1,48 +1,39 @@
 @import "../../defaults";
 
-#today-wrapper {
+.today {
+  font-weight: 300;
   margin-top: 40px;
 
-  h2.date-text {
-    font-weight: 300;
+  h2 {
     font-size: 1.8em;
+    font-weight: 100; 
     margin-bottom: 10px;
   }
   
-  h3.forecast-desc {
-    font-weight: 300;
+  h3 {
     font-size: 1.4em;
+    font-weight: 100; 
     margin-top: 10px;
     text-transform: capitalize;
   }
 
-  .current-wrapper {
-
+  ul {
     color: $color-highlight;
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
-    margin-left: -20px;
-    margin-top: -10px;
-
-    .current-temp,
-    .current-icon,
-    .current-stats {
-      margin: 15px;
+    margin: -10px 0 0 -20px;
+    padding: 0;
+    
+    li {
       display: inline-block;
-    }
-
-    .current-temp {
+      margin: 15px;
       font-size: 5em;
-    }
+      font-weight: 400;
 
-    .current-icon {
-      font-size: 5em;
-    }
-
-    .current-stats {
       table {
-        font-weight: 300;
+        font-size: 0.2em;
+        font-weight: 100; 
         border-spacing: 5px;
       }
     }

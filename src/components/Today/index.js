@@ -11,23 +11,21 @@ const Today = props => {
   const { temp, humidity, pressure } = today.main
 
   return (
-    <section id='today-wrapper'>
-      <h2 className='date-text'>{date}</h2>
-      <h3 className='forecast-desc'>{todayWeather.description}</h3>
-      <div className='current-wrapper'>
-        <div className='current-temp'>
-          <span>{getTempString(temp, units)}</span>
-        </div>
-        <div className='current-icon'>
-          <span> <i className={getIconClass(todayWeather.icon)} /></span>
-        </div>
-        <div className='current-stats'>
+    <section className='today'>
+      <h2>{date}</h2>
+      <h3>{todayWeather.description}</h3>
+      <ul>
+        <li>{getTempString(temp, units)}</li>
+        <li>
+          <span className={getIconClass(todayWeather.icon)} />
+        </li>
+        <li>
           <table>
             <tbody>
               <tr>
                 <td>Wind</td>
                 <td>
-                  <i className={'wi wi-wind from-' + wind.deg.toFixed() + '-deg'} />
+                  <span className={'wi wi-wind from-' + wind.deg.toFixed() + '-deg'} />
                   {' '}
                   { getSpeedString(wind.speed, units) }
                 </td>
@@ -46,8 +44,8 @@ const Today = props => {
               </tr>
             </tbody>
           </table>
-        </div>
-      </div>
+        </li>
+      </ul>
     </section>
   )
 }

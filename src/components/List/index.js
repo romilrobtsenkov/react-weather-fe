@@ -23,20 +23,18 @@ const List = props => {
     const { temp } = main
 
     items.push(
-      <div key={dt} className='weather-list-item' >
-        <p className='list-weekday'>{moment(dt * 1000).format('dddd')}</p>
-        <p className='list-icon'>
-          <i className={getIconClass(singleWeather.icon)} />
-        </p>
-        <p className='list-temp'>{ getTempString(temp, units) }</p>
-      </div>
+      <li key={dt} className='items__item' >
+        <p className='items__item__weekday'>{moment(dt * 1000).format('dddd')}</p>
+        <p className='items__item__icon'><span className={getIconClass(singleWeather.icon)} /></p>
+        <p className='items__item__temp'>{getTempString(temp, units)}</p>
+      </li>
     )
   })
 
   return (
-    <div className='list-wrapper' >
+    <ul className='items' >
       {items}
-    </div>
+    </ul>
   )
 }
 

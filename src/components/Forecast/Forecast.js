@@ -51,16 +51,12 @@ class Forecast extends React.Component {
     const errorAccoured = !loading && error
 
     return (
-      <section id='forecast'>
-        <div className='forecast-header clearfix'>
-          <Link className='link-back' to='/'><img src={backIcon} /></Link>
+      <section className='forecast'>
+        <div className='header clearfix'>
+          <Link className='header__link-back' to='/'><img src={backIcon} /></Link>
           <Unitswitch units={units} handleUnitChange={this.handleUnitChange} />
-          <div className='city-placeholder'>
-            <h1 className='city-name' >
-              <span className='name-text'>
-                {weather.city && weather.city.name}
-              </span>
-            </h1>
+          <div className='header__city'>
+            <h1>{weather.city && weather.city.name}</h1>
           </div>
         </div>
         {errorAccoured &&

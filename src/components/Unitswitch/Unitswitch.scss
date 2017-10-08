@@ -2,48 +2,59 @@
 
 /* Generated https://proto.io/freebies/onoff/ */
 .onoffswitch {
+  float: right;
+  margin-top: 10px;
   position: relative; width: 90px;
   -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none; user-select: none;
+
+  input { display: none; }
+
+  label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 1px solid $color-main; border-radius: 50px;
+ 
+    .inner {
+      display: block; width: 200%; margin-left: -100%;
+      transition: margin 0.3s ease-in 0s;
+      
+      &:before, 
+      &:after {
+        display: block; float: left; width: 50%; height: 29px; padding: 0; line-height: 29px;
+        font-size: 13px; color: white; font-weight: 900;
+        box-sizing: border-box;
+      }
+
+      &:before {
+        content: "\B0\43";
+        padding-left: 18px;
+        background-color: #ffffff; color: $color-main;
+      }
+
+      &:after {
+        content: "\B0\46";
+        padding-right: 18px;
+        background-color: #ffffff; color: $color-main;
+        text-align: right;
+      }
+    }
+    
+    .switch {
+      display: block; width: 30px; margin: 3px;
+      background: #ffffff;
+      position: absolute; top: 0; bottom: 0;
+      right: 52px;
+      border: 1px solid $color-main; border-radius: 50px;
+      transition: all 0.3s ease-in 0s; 
+    }
+
+  }
+
+  input:checked + label .inner {
+    margin-left: 0;
+  }
+  input:checked + label .switch {
+    right: 0px; 
+    background-color: #ffffff; 
+  }
 }
-.onoffswitch-checkbox {
-  display: none;
-}
-.onoffswitch-label {
-  display: block; overflow: hidden; cursor: pointer;
-  border: 1px solid $color-main; border-radius: 50px;
-}
-.onoffswitch-inner {
-  display: block; width: 200%; margin-left: -100%;
-  transition: margin 0.3s ease-in 0s;
-}
-.onoffswitch-inner:before, .onoffswitch-inner:after {
-  display: block; float: left; width: 50%; height: 29px; padding: 0; line-height: 29px;
-  font-size: 13px; color: white; font-weight: 900;
-  box-sizing: border-box;
-}
-.onoffswitch-inner:before {
-  content: "\B0\43";
-  padding-left: 18px;
-  background-color: #ffffff; color: $color-main;
-}
-.onoffswitch-inner:after {
-  content: "\B0\46";
-  padding-right: 18px;
-  background-color: #ffffff; color: $color-main;
-  text-align: right;
-}
-.onoffswitch-switch {
-  display: block; width: 30px; margin: 3px;
-  background: #ffffff;
-  position: absolute; top: 0; bottom: 0;
-  right: 52px;
-  border: 1px solid $color-main; border-radius: 50px;
-  transition: all 0.3s ease-in 0s; 
-}
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
-  margin-left: 0;
-}
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-  right: 0px; 
-  background-color: #ffffff; 
-}
+
